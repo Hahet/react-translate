@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./translate.css";
-
+import "./index.css";
+import List from "./List";
 const post = (url, data) => {
   // Default options are marked with *
   return fetch(url, {
@@ -16,6 +16,7 @@ const languages = {
   en: "英文",
   zh: "中文"
 };
+
 class Translate extends Component {
   state = {
     from: "en",
@@ -61,6 +62,7 @@ class Translate extends Component {
 
   handleKeyDown = e => {
     if (e.key === "Enter") {
+      e.preventDefault();
       this.apiTranslate();
     }
   };
@@ -94,15 +96,7 @@ class Translate extends Component {
             rows="5"
           />
         </div>
-        <div className="to">
-          {results.map(r => {
-            return (
-              <div key={r.dst} className="item">
-                {r.dst}
-              </div>
-            );
-          })}
-        </div>
+        <List data={results} />
       </div>
     );
   }
