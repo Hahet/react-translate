@@ -32,6 +32,12 @@ class Translate extends Component {
       to,
       q: query
     };
+
+    // let data = {
+    //   from: from,
+    //   to:to,
+    //   q: query
+    // };
     post("/translate", data).then(data => {
       this.setState({
         results: data.trans_result
@@ -56,6 +62,7 @@ class Translate extends Component {
     let query = e.target.value;
     console.log("query", query);
     this.setState({
+      // query: query
       query
     });
   };
@@ -69,6 +76,7 @@ class Translate extends Component {
 
   render() {
     const { query, from, to, results } = this.state;
+    // const query = this.state.query
     return (
       <div className="App">
         <div className="title">
